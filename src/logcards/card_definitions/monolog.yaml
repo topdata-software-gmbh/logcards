@@ -1,0 +1,27 @@
+# Card definition for Shopware 6 / monolog logs
+# (`var/log/<env>-YYYY-MM-DD.log` — JSON or Symfony text format).
+#
+# The monolog parser normalizes every line to the keys below:
+# message, level, level_name, channel, datetime, exception_class.
+# Matched on `level_name` + `channel` being present (and message non-empty).
+
+id: monolog
+priority: 10
+matcher:
+  key_exist: [level_name, channel]
+  not_empty: [message]
+
+render:
+  title: "{level_name}"
+  border: "yellow"
+  badge: "{channel}"
+  timestamp: "{datetime}"
+  fields:
+    - key: message
+      value: "{message}"
+    - key: exception_class
+      value: "exception: {exception_class}"
+  payload:
+    source: context
+    formatter: json
+  show_unmapped: true

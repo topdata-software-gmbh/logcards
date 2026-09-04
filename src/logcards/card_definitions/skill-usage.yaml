@@ -1,0 +1,24 @@
+# Card definition for opencode `skill-usage-tracker` telemetry
+# (`~/.local/share/opencode/telemetry/skill-usage.jsonl`).
+#
+# Matched on `skillName` being non-empty — every record carries one, so
+# the card wins regardless of filename.
+
+id: skill-usage
+priority: 10
+matcher:
+  key_exist: [skillName, source, sessionID]
+  not_empty: [skillName]
+
+render:
+  title: "skill: {skillName}"
+  border: "magenta"
+  badge: "{source}"
+  timestamp: "{timestamp}"
+  fields:
+    - key: sessionID
+      value: "session: {sessionID}"
+  payload:
+    source: args
+    formatter: json
+  show_unmapped: true

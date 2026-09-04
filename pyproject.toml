@@ -1,0 +1,48 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "logcards"
+version = "0.1.0"
+description = "Render JSONL/text logs as styled terminal cards from YAML card definitions"
+requires-python = ">=3.12"
+license = "MIT"
+dependencies = [
+    "typer>=0.9.0",
+    "rich>=13.7.0",
+    "PyYAML>=6.0",
+]
+
+[project.scripts]
+logcards = "logcards.cli:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "black>=24.0.0",
+    "mypy>=1.8.0",
+    "ruff>=0.3.0",
+    "types-PyYAML>=6.0.12",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/logcards"]
+artifacts = ["src/logcards/card_definitions/*.yaml"]
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+
+[tool.mypy]
+strict = true
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+
+[tool.pytest.ini_options]
+addopts = "--cov=logcards --cov-report=term-missing"

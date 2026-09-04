@@ -1,0 +1,34 @@
+# Card definition for opencode `tool-usage-tracker` telemetry
+# (`~/.local/share/opencode/telemetry/mcp-tool-usage.jsonl`).
+#
+# Matched on `toolID` being non-empty — every record carries one, so the
+# card wins regardless of filename.
+
+id: mcp-tool-usage
+priority: 10
+matcher:
+  key_exist: [toolID, server, toolName, status]
+  not_empty: [toolID, server, toolName]
+
+render:
+  title: "{toolName}"
+  border: "cyan"
+  badge: "{server}"
+  timestamp: "{timestamp}"
+  fields:
+    - key: toolID
+      value: "tool: {toolID}"
+    - key: status
+      value: "{status}"
+    - key: durationMs
+      value: "duration: {durationMs} ms"
+    - key: responseSize
+      value: "response: {responseSize} B"
+    - key: callID
+      value: "call: {callID}"
+    - key: sessionID
+      value: "session: {sessionID}"
+  payload:
+    source: args
+    formatter: json
+  show_unmapped: true

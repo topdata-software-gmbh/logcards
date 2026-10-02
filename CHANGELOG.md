@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2026-10-02
+
+### Added
+- First published release. `logcards` is now built as a wheel/sdist and
+  published to the internal devpi index (`topdata/packages`), so consumers
+  resolve it by version range instead of an absolute local path.
+- `shell/publish.sh` — build and publish helper (`devpi upload`; see
+  topdata-devpi for why `uv publish` does not work against devpi).
+
+### Changed
+- Version bumped `0.1.0` → `0.2.0` to mark the first published release.
+- Consumers pin `logcards>=0.2.0`. The import name and `logcards` CLI entry
+  point are unchanged.
+
 ## [Unreleased]
 
 ### Added

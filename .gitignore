@@ -42,3 +42,6 @@ Desktop.ini
 .tox/
 coverage/
 htmlcov/
+
+# pytest-cov artifact (the dir form is already covered above)
+.coverage

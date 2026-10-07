@@ -105,6 +105,16 @@ uv run black --check src tests
 uv run mypy src
 ```
 
+## Releasing
+
+Published to the private devpi index with `topdata-release` — the single
+release implementation, living in `topdata-devpi/release-tool`; see that
+repo's README for tunnel setup, install and credentials.
+
+```bash
+topdata-release .
+```
+
 ## License
 
 MIT

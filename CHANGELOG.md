@@ -21,6 +21,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Releasing now goes through the shared `topdata-release` CLI
+  (`topdata-devpi/release-tool`); the vendored `shell/publish.sh` was removed.
+
 ### Added
 - Initial project structure with README and CHANGELOG.
 - Card engine (`rules`, `matcher`, `engine`, `renderers`, `streamer`)
